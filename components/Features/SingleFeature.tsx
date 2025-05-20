@@ -22,15 +22,15 @@ const SingleFeature = ({ feature }: { feature: Feature }) => {
         whileInView="visible"
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="animate_top shadow-solid-3 hover:shadow-solid-4 dark:border-strokedark dark:bg-blacksection dark:hover:bg-hoverdark z-40 rounded-lg border border-white bg-white p-7.5 transition-all xl:p-12.5"
+        className="animate_top shadow-solid-3 hover:shadow-solid-4 dark:border-strokedark dark:bg-blacksection dark:hover:bg-hoverdark z-40 rounded-lg border border-gray-100 bg-white p-7.5 text-center transition-all md:text-start xl:p-12.5"
       >
-        <div className="bg-primary relative flex h-16 w-16 items-center justify-center rounded-[4px]">
+        <div className="bg-primary relative mx-auto flex h-16 w-16 items-center justify-center rounded-[4px] md:mx-0">
           {icon}
         </div>
-        <h3 className="xl:text-itemtitle mt-7.5 mb-5 text-xl font-semibold text-black dark:text-white">
+        <h3 className="mt-7.5 mb-5 text-xl font-semibold text-black dark:text-white">
           {title}
         </h3>
-        <p>{description}</p>
+        <p className="text-lg text-black dark:text-slate-300">{description}</p>
       </motion.div>
     </>
   );

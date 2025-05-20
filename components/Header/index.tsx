@@ -3,13 +3,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Landmark } from "lucide-react";
 import ThemeToggler from "./ThemeToggler";
 import menuData from "./menuData";
 
 const Header = () => {
   const [navigationOpen, setNavigationOpen] = useState(false);
-  const [dropdownToggler, setDropdownToggler] = useState(false);
   const [stickyMenu, setStickyMenu] = useState(false);
 
   const pathUrl = usePathname();
@@ -36,16 +34,9 @@ const Header = () => {
       }`}
     >
       <div className="max-w-c-1390 relative mx-auto items-center justify-between px-4 md:px-8 xl:flex 2xl:px-0">
-        <div className="flex w-full items-center justify-between xl:w-1/4">
-          <Link
-            className="text-primary flex items-center text-3xl font-medium"
-            href="/"
-          >
-            <span>
-              {" "}
-              <Landmark />
-            </span>
-            <span> মাদরাসাফট</span>
+        <div className="flex w-full items-center justify-between xl:w-1/6">
+          <Link className="text-primary text-3xl font-medium" href="/">
+            মাদরাসাফট
           </Link>
 
           {/* <!-- Hamburger Toggle BTN --> */}
@@ -99,48 +90,11 @@ const Header = () => {
           <nav>
             <ul className="flex flex-col gap-5 xl:flex-row xl:items-center xl:gap-10">
               {menuData.map((menuItem, key) => (
-                <li key={key} className={menuItem.submenu && "group relative"}>
-                  {menuItem.submenu ? (
-                    <>
-                      <button
-                        onClick={() => setDropdownToggler(!dropdownToggler)}
-                        className="hover:text-primary flex cursor-pointer items-center justify-between gap-3"
-                      >
-                        {menuItem.title}
-                        <span>
-                          <svg
-                            className="fill-waterloo group-hover:fill-primary h-3 w-3 cursor-pointer"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 512 512"
-                          >
-                            <path d="M233.4 406.6c12.5 12.5 32.8 12.5 45.3 0l192-192c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 338.7 86.6 169.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l192 192z" />
-                          </svg>
-                        </span>
-                      </button>
-
-                      <ul
-                        className={`dropdown ${dropdownToggler ? "flex" : ""}`}
-                      >
-                        {menuItem.submenu.map((item, key) => (
-                          <li key={key} className="hover:text-primary">
-                            <Link href={item.path || "#"}>{item.title}</Link>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <Link
-                      href={`${menuItem.path}`}
-                      className={
-                        pathUrl === menuItem.path
-                          ? "text-primary hover:text-primary"
-                          : "hover:text-primary"
-                      }
-                    >
-                      {menuItem.title}
-                    </Link>
-                  )}
-                </li>
+                <Link key={key} href={menuItem.path}>
+                  <li className="hover:text-blackho flex cursor-pointer items-center justify-between gap-3 text-lg font-[600] text-black md:text-lg dark:text-gray-200">
+                    {menuItem.title}
+                  </li>
+                </Link>
               ))}
             </ul>
           </nav>
@@ -150,7 +104,7 @@ const Header = () => {
 
             <Link
               href="#contact"
-              className="bg-primary text-regular hover:bg-primaryho flex items-center justify-center rounded-lg px-7.5 py-2.5 text-white duration-300 ease-in-out"
+              className="bg-primary hover:bg-primaryho flex items-center justify-center rounded-sm px-7.5 py-2.5 font-bold text-white duration-300 ease-in-out"
             >
               যোগাযোগ করুন
             </Link>
